@@ -168,6 +168,8 @@ export function queueWatcher (watcher: Watcher) {
     if (!flushing) {
       queue.push(watcher)
     } else {
+      // TODO: 已经开始遍历的时候，需要每次对队列长度取值。因为可能过程中有新的队列进入
+      // TODO: 找到第一个大于当前 Watcher 的位置插入
       // if already flushing, splice the watcher based on its id
       // if already past its id, it will be run next immediately.
       let i = queue.length - 1
